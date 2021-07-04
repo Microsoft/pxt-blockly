@@ -212,6 +212,23 @@ Blockly.pxt.ConstantProvider.prototype.createDom = function(svg) {
   this.warningGlowFilterId = warningGlowFilter.id;
   this.warningGlowFilter_ = warningGlowFilter;
 
+  // Grayscale filter
+  var grayscaleFilter = Blockly.utils.dom.createSvgElement('filter',
+      {
+        'id': 'blocklyGrayscaleFilter' + this.randomIdentifier_,
+        'height': '160%',
+        'width': '180%',
+        y: '-30%',
+        x: '-40%'
+      },
+      defs);
+  Blockly.utils.dom.createSvgElement('feColorMatrix',
+    {'type': 'saturate',
+     'values': '0.10'},
+    grayscaleFilter);
+  this.grayscaleFilterId = grayscaleFilter.id;
+  this.grayscaleFilter_ = grayscaleFilter;
+
   // Add dropdown image definitions
   var arrowSize = this.FIELD_DROPDOWN_SVG_ARROW_SIZE;
   var dropdownArrowImage = Blockly.utils.dom.createSvgElement('image',

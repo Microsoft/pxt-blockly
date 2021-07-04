@@ -1324,6 +1324,18 @@ Blockly.BlockSvg.prototype.setHighlighted = function(highlighted) {
 };
 
 /**
+ * Set whether the block is grayscale or not.
+ * @param {boolean} grayscale True if grayscale.
+ */
+Blockly.BlockSvg.prototype.setGrayscale = function(grayscale) {
+  if (!this.rendered) {
+    return;
+  }
+  this.pathObject.updateGrayscale(grayscale);
+};
+
+
+/**
  * pxt-blockly specific:
  * Set whether the block is highlighted as a warning or not.
  * @param {boolean} highlighted True if highlighted.
